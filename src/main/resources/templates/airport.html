@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Airports</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/topnavbar :: navbar"></div>
+
+
+<div class="container" align="center">
+
+    <div class="row">
+        <h1>Airports</h1>
+    </div>
+
+
+    <table class="table table-stripped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Airport ID</th>
+            <th>Name</th>
+            <th>country</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "airport: ${airports}">
+            <td th:text = "${airport.id}"></td>
+            <td th:text = "${airport.name}"></td>
+            <td th:text = "${airport.country}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

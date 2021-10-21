@@ -41,12 +41,16 @@ public class PassengerController {
     @GetMapping("/passengers/edit/{id}")
     public String editPassengerForm(@PathVariable Long id, Model model){
         model.addAttribute("passenger",passengerService.getPassengerById(id));
+        System.out.println(passengerService.getPassengerById(id).getName());
         return "edit_passenger";
     }
 
     @PostMapping("/passengers/{id}")
     public String updatePassenger(@PathVariable Long id, @ModelAttribute("passenger") Passenger passenger,Model model){
         Passenger existingPassenger = passengerService.getPassengerById(id);
+
+        System.out.println("To update : "+id);
+
         existingPassenger.setId(id);
         existingPassenger.setName(passenger.getName());
         existingPassenger.setMobileNumber(passenger.getMobileNumber());
