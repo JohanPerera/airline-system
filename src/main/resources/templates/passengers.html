@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Passenger Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:replace="fragments/topnavbar :: navbar"></div>
+
+
+<div class="container" align="center">
+
+    <div class="row">
+        <h1>Passengers Management</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href = "@{/passengers/new}" class = "btn btn-primary btn-sm mb-3">Add Passenger</a>
+        </div>
+    </div>
+    <br>
+
+    <table class="table table-stripped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Passenger ID</th>
+                <th>Name</th>
+                <th>Mobile Number</th>
+                <th>NIC</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "passenger: ${passengers}">
+                <td th:text = "${passenger.id}"></td>
+                <td th:text = "${passenger.name}"></td>
+                <td th:text = "${passenger.mobileNumber}"></td>
+                <td th:text = "${passenger.NIC}"></td>
+                <td>
+                    <a th:href="@{/passengers/edit/{id}(id=${passenger.id})}" class="btn btn-primary">Update</a>
+                    <a th:href="@{/passengers/{id}(id=${passenger.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
