@@ -17,7 +17,16 @@ public class AirportServiceImpl implements AirportService {
     }
 
     public AirportServiceImpl() {
+        Airport airport = new Airport("Katunayake","Sri Lanka");
+        airportRepository.save(airport);
 
+
+        airport = new Airport("London airline","England");
+        airportRepository.save(airport);
+
+
+        airport = new Airport("Shi ging","China");
+        airportRepository.save(airport);
     }
 
     @Autowired

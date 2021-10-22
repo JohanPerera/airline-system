@@ -14,7 +14,6 @@ public class AirportController {
 
     public AirportController(AirportService airportService) {
         super();
-        System.out.println("airport controller called");
         this.airportService = airportService;
     }
 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Airline System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/topnavbar :: navbar"></div>
+
+
+<div class="container" align="center">
+
+    <div class="row">
+        <h1>Flights</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href = "@{/flights/new}" class = "btn btn-primary btn-sm mb-3">Add Flight</a>
+        </div>
+    </div>
+    <br>
+
+    <table class="table table-stripped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Flight ID</th>
+            <th>Plane</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure Time</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "flight: ${flights}">
+            <td th:text = "${flight.id}"></td>
+            <td th:text = "${flight.plane}"></td>
+            <td th:text = "${flight.fromAirportId}"></td>
+            <td th:text = "${flight.toAirportId}"></td>
+            <td th:text = "${flight.depTime}"></td>
+            <td>
+                <a th:href="@{/flights/edit/{id}(id=${flight.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/flights/{id}(id=${flight.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

@@ -1,7 +1,6 @@
 package com.airline.AirlineSystem.controller;
 
 import com.airline.AirlineSystem.entity.Passenger;
-import com.airline.AirlineSystem.repository.PassengerRepository;
 import com.airline.AirlineSystem.service.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,15 +40,12 @@ public class PassengerController {
     @GetMapping("/passengers/edit/{id}")
     public String editPassengerForm(@PathVariable Long id, Model model){
         model.addAttribute("passenger",passengerService.getPassengerById(id));
-        System.out.println(passengerService.getPassengerById(id).getName());
         return "edit_passenger";
     }
 
     @PostMapping("/passengers/{id}")
-    public String updatePassenger(@PathVariable Long id, @ModelAttribute("passenger") Passenger passenger,Model model){
+    public String updatePassenger(@PathVariable Long id, @ModelAttribute("passenger") Passenger passenger){
         Passenger existingPassenger = passengerService.getPassengerById(id);
-
-        System.out.println("To update : "+id);
 
         existingPassenger.setId(id);
         existingPassenger.setName(passenger.getName());

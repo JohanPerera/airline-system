@@ -1,6 +1,7 @@
 package com.airline.AirlineSystem.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="airports")
@@ -16,14 +17,32 @@ public class Airport {
     @Column(name="country",nullable = false)
     private String country;
 
+    @OneToMany(mappedBy = "fromAirport", fetch = FetchType.EAGER)
+    private List<Flight> fromFlightList;
+
+    @OneToMany(mappedBy = "toAirport", fetch = FetchType.EAGER)
+    private List<Flight> toFlightList;
+
     public Airport(String name, String country) {
         super();
         this.name = name;
         this.country = country;
     }
 
-    public Airport() {
-        super();
+    public List<Flight> getFromFlightList() {
+        return fromFlightList;
+    }
+
+    public void setFromFlightList(List<Flight> fromFlightList) {
+        this.fromFlightList = fromFlightList;
+    }
+
+    public List<Flight> getToFlightList() {
+        return toFlightList;
+    }
+
+    public void setToFlightList(List<Flight> toFlightList) {
+        this.toFlightList = toFlightList;
     }
 
     public Long getId() {
