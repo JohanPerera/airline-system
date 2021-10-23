@@ -17,6 +17,12 @@
         <h1>Airports</h1>
     </div>
 
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href = "@{/airports/new}" class = "btn btn-primary btn-sm mb-3">Add Airport</a>
+        </div>
+    </div>
+    <br>
 
     <table class="table table-stripped table-bordered">
         <thead class="table-dark">
@@ -31,6 +37,10 @@
             <td th:text = "${airport.id}"></td>
             <td th:text = "${airport.name}"></td>
             <td th:text = "${airport.country}"></td>
+            <td>
+                <a th:href="@{/airports/edit/{id}(id=${airport.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/airports/{id}(id=${airport.id})}" class="btn btn-danger">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

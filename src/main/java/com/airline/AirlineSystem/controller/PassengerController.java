@@ -1,6 +1,7 @@
 package com.airline.AirlineSystem.controller;
 
 import com.airline.AirlineSystem.entity.Passenger;
+import com.airline.AirlineSystem.service.FlightService;
 import com.airline.AirlineSystem.service.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,9 @@ public class PassengerController {
 
     @Autowired
     private PassengerService passengerService;
+
+    @Autowired
+    private FlightService flightService;
 
     public PassengerController(PassengerService passengerService) {
         super();
@@ -28,6 +32,7 @@ public class PassengerController {
     public String createPassenger(Model model){
         Passenger passenger = new Passenger();
         model.addAttribute("passenger",passenger);
+        model.addAttribute("flights",flightService.getAllFlights());
         return "add_passenger";
     }
 
@@ -40,6 +45,7 @@ public class PassengerController {
     @GetMapping("/passengers/edit/{id}")
     public String editPassengerForm(@PathVariable Long id, Model model){
         model.addAttribute("passenger",passengerService.getPassengerById(id));
+        model.addAttribute("flights",flightService.getAllFlights());
         return "edit_passenger";
     }
 
@@ -51,6 +57,7 @@ public class PassengerController {
         existingPassenger.setName(passenger.getName());
         existingPassenger.setMobileNumber(passenger.getMobileNumber());
         existingPassenger.setNIC(passenger.getNIC());
+        existingPassenger.setFlight(passenger.getFlight());
 
          passengerService.updatePassenger(existingPassenger);
          return "redirect:/passengers";

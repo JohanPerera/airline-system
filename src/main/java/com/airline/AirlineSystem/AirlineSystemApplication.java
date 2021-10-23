@@ -22,8 +22,8 @@ public class AirlineSystemApplication implements CommandLineRunner {
 		SpringApplication.run(AirlineSystemApplication.class, args);
 	}
 
-	@Autowired
-	AirportRepository airportRepository;
+//	@Autowired
+//	AirportRepository airportRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -32,11 +32,11 @@ public class AirlineSystemApplication implements CommandLineRunner {
 //		airportRepository.save(passenger);
 
 
-
+//
 //		Airport airport = new Airport("Katunayake","Sri Lanka");
 //		airportRepository.save(airport);
 //
-
+//
 //
 //		airport = new Airport("London airline","England");
 //		airportRepository.save(airport);

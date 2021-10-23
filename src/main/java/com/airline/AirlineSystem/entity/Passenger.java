@@ -19,15 +19,29 @@ public class Passenger {
     @Column(name="NIC",unique = true)
     private String NIC;
 
+    @ManyToOne
+    @JoinColumn(name = "flight_id")
+    private Flight flight;
+
     public Passenger() {
         super();
     }
 
-    public Passenger(String name, String mobileNumber, String NIC) {
+    public Passenger(String name, String mobileNumber, String NIC,Flight flight) {
         super();
         this.name = name;
         this.mobileNumber = mobileNumber;
         this.NIC = NIC;
+        this.flight=flight;
+    }
+
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
     }
 
     public Long getId() {

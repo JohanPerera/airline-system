@@ -1,5 +1,7 @@
 package com.airline.AirlineSystem.entity;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,16 +13,17 @@ public class Airport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column(name="name",nullable = false)
     private String name;
 
     @Column(name="country",nullable = false)
     private String country;
 
-    @OneToMany(mappedBy = "fromAirport", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "fromAirport", fetch = FetchType.LAZY)
     private List<Flight> fromFlightList;
 
-    @OneToMany(mappedBy = "toAirport", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "toAirport", fetch = FetchType.LAZY)
     private List<Flight> toFlightList;
 
     public Airport(String name, String country) {

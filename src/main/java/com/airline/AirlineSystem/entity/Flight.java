@@ -2,6 +2,7 @@ package com.airline.AirlineSystem.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="flights")
@@ -24,6 +25,17 @@ public class Flight {
 
     @Column(name="departure_time",nullable = false)
     private Date depTime;
+
+    @OneToMany(mappedBy = "flight",fetch = FetchType.LAZY)
+    private List<Passenger> passengers;
+
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(List<Passenger> passengers) {
+        this.passengers = passengers;
+    }
 
     public Flight() {
         super();
