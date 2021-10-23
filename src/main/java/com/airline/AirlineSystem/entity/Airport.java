@@ -29,6 +29,17 @@ public class Airport {
         this.country = country;
     }
 
+//    public Airport(String name, String country, List<Flight> fromFlightList, List<Flight> toFlightList) {
+//        this.name = name;
+//        this.country = country;
+//        this.fromFlightList = fromFlightList;
+//        this.toFlightList = toFlightList;
+//    }
+
+    public Airport() {
+        super();
+    }
+
     public List<Flight> getFromFlightList() {
         return fromFlightList;
     }

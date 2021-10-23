@@ -39,8 +39,8 @@
         <tr th:each = "flight: ${flights}">
             <td th:text = "${flight.id}"></td>
             <td th:text = "${flight.plane}"></td>
-            <td th:text = "${flight.fromAirportId}"></td>
-            <td th:text = "${flight.toAirportId}"></td>
+            <td th:text = "${flight.fromAirport.name}"></td>
+            <td th:text = "${flight.toAirport.name}"></td>
             <td th:text = "${flight.depTime}"></td>
             <td>
                 <a th:href="@{/flights/edit/{id}(id=${flight.id})}" class="btn btn-primary">Update</a>

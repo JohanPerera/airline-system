@@ -12,6 +12,10 @@ public class AirportController {
     @Autowired
     private AirportService airportService;
 
+    public AirportController() {
+        super();
+    }
+
     public AirportController(AirportService airportService) {
         super();
         this.airportService = airportService;

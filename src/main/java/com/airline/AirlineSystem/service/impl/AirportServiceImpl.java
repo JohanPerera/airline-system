@@ -12,25 +12,14 @@ import java.util.List;
 @Service
 public class AirportServiceImpl implements AirportService {
 
-    static{
-
-    }
-
-    public AirportServiceImpl() {
-        Airport airport = new Airport("Katunayake","Sri Lanka");
-        airportRepository.save(airport);
-
-
-        airport = new Airport("London airline","England");
-        airportRepository.save(airport);
-
-
-        airport = new Airport("Shi ging","China");
-        airportRepository.save(airport);
-    }
-
     @Autowired
     AirportRepository airportRepository;
+
+
+    public AirportServiceImpl() {
+        super();
+    }
+
 
     @Override
     public List<Airport> getAllAirports() {

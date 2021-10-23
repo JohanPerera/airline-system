@@ -14,7 +14,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="text-center">Update Flight</h1>
             <div class="card-body">
-                <form th:action="@{/flights/{id}(id=${flight.id})" th:object="${flight}" method="POST">
+                <form th:action="@{/flights/{id}(id=${flight.id})}" th:object="${flight}" method="POST">
                     <div class="form-group">
                         <label>Plane</label>
                         <input
@@ -29,7 +29,7 @@
                         <input
                                 type="text"
                                 name="fromAirport"
-                                th:field="*{fromAirport}"
+                                th:field="*{fromAirport.id}"
                                 class="form-control"
                         />
                     </div>
@@ -38,7 +38,7 @@
                         <input
                                 type="text"
                                 name="toAirport"
-                                th:field="*{toAirport}"
+                                th:field="*{toAirport.id}"
                                 class="form-control"
                         />
                     </div>

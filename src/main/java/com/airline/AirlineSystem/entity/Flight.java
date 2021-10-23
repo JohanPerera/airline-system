@@ -15,18 +15,22 @@ public class Flight {
     private String plane;
 
     @ManyToOne
+    @JoinColumn(name = "from_airport_id")
     private Airport fromAirport;
 
     @ManyToOne
+    @JoinColumn(name = "to_airport_id")
     private Airport toAirport;
 
     @Column(name="departure_time")
     private String depTime;
 
     public Flight() {
+        super();
     }
 
     public Flight(String plane, Airport fromAirport, Airport toAirport, String depTime) {
+        super();
         this.plane = plane;
         this.fromAirport = fromAirport;
         this.toAirport = toAirport;

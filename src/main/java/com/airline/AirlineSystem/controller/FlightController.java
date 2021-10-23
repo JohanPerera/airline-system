@@ -28,8 +28,9 @@ public class FlightController {
     }
 
     @GetMapping("/flights")
-    public List <Flight> getAllFlights(){
-        return flightService.getAllFlights();
+    public String getAllFlights(Model model){
+        model.addAttribute("flights",flightService.getAllFlights());
+        return "flights";
     }
 
     @GetMapping("/flights/new")
@@ -39,19 +40,19 @@ public class FlightController {
         return "add_flight";
     }
 
-    @PostMapping(value = "/flights")
+    @PostMapping("/flights")
     public String saveFlight(@ModelAttribute("flight") Flight flight){
         flightService.addFlight(flight);
         return "redirect:/flights";
     }
 
-    @GetMapping("flights/update/{id}")
+    @GetMapping("flights/edit/{id}")
     public String editFlightForm(@PathVariable Long id, Model model){
         model.addAttribute("flight",flightService.getFlightById(id));
         return "edit_flight";
     }
 
-    @PostMapping(value = "/flights/{id}")
+    @PostMapping("/flights/{id}")
     public String updateFlight(@PathVariable Long id,@ModelAttribute("flight") Flight flight){
         Flight existingFlight = flightService.getFlightById(id);
 
@@ -64,6 +65,12 @@ public class FlightController {
         existingFlight.setPlane(flight.getPlane());
 
         flightService.updateFlight(flight);
+        return "redirect:/flights";
+    }
+
+    @GetMapping("/flights/{id}")
+    public String deleteFlight(@PathVariable Long id){
+        flightService.deleteFlight(id);
         return "redirect:/flights";
     }
 }
