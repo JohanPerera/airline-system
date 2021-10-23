@@ -11,25 +11,25 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="plane")
+    @Column(name="plane",nullable = false)
     private String plane;
 
     @ManyToOne
-    @JoinColumn(name = "from_airport_id")
+    @JoinColumn(name = "from_airport_id",nullable = false)
     private Airport fromAirport;
 
     @ManyToOne
-    @JoinColumn(name = "to_airport_id")
+    @JoinColumn(name = "to_airport_id",nullable = false)
     private Airport toAirport;
 
-    @Column(name="departure_time")
-    private String depTime;
+    @Column(name="departure_time",nullable = false)
+    private Date depTime;
 
     public Flight() {
         super();
     }
 
-    public Flight(String plane, Airport fromAirport, Airport toAirport, String depTime) {
+    public Flight(String plane, Airport fromAirport, Airport toAirport, Date depTime) {
         super();
         this.plane = plane;
         this.fromAirport = fromAirport;
@@ -69,11 +69,11 @@ public class Flight {
         this.toAirport = toAirport;
     }
 
-    public String getDepTime() {
+    public Date getDepTime() {
         return depTime;
     }
 
-    public void setDepTime(String depTime) {
+    public void setDepTime(Date depTime) {
         this.depTime = depTime;
     }
 }
