@@ -1,6 +1,9 @@
 package com.airline.AirlineSystem.entity;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="airports")
@@ -10,11 +13,18 @@ public class Airport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column(name="name",nullable = false)
     private String name;
 
     @Column(name="country",nullable = false)
     private String country;
+
+    @OneToMany(mappedBy = "fromAirport", fetch = FetchType.LAZY)
+    private List<Flight> fromFlightList;
+
+    @OneToMany(mappedBy = "toAirport", fetch = FetchType.LAZY)
+    private List<Flight> toFlightList;
 
     public Airport(String name, String country) {
         super();
@@ -22,8 +32,31 @@ public class Airport {
         this.country = country;
     }
 
+//    public Airport(String name, String country, List<Flight> fromFlightList, List<Flight> toFlightList) {
+//        this.name = name;
+//        this.country = country;
+//        this.fromFlightList = fromFlightList;
+//        this.toFlightList = toFlightList;
+//    }
+
     public Airport() {
         super();
+    }
+
+    public List<Flight> getFromFlightList() {
+        return fromFlightList;
+    }
+
+    public void setFromFlightList(List<Flight> fromFlightList) {
+        this.fromFlightList = fromFlightList;
+    }
+
+    public List<Flight> getToFlightList() {
+        return toFlightList;
+    }
+
+    public void setToFlightList(List<Flight> toFlightList) {
+        this.toFlightList = toFlightList;
     }
 
     public Long getId() {

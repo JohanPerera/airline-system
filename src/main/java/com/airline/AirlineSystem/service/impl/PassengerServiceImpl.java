@@ -23,15 +23,12 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     public Passenger updatePassenger(Passenger passenger) {
-        System.out.println("update serrvice : " + passenger.getName());
         return repo.save(passenger);
     }
 
     @Override
     public Passenger getPassengerById(Long id) {
         Passenger passenger = repo.findById(id).get();
-        System.out.println("getting service");
-        System.out.println(passenger.getName());
         return passenger;
     }
 

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Passenger Management</title>
+    <title>Airline System</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -31,6 +31,10 @@
                 <th>Name</th>
                 <th>Mobile Number</th>
                 <th>NIC</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Plane</th>
+                <th>Date & Time</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -40,6 +44,10 @@
                 <td th:text = "${passenger.name}"></td>
                 <td th:text = "${passenger.mobileNumber}"></td>
                 <td th:text = "${passenger.NIC}"></td>
+                <td th:text = "${passenger.flight.fromAirport.name}"></td>
+                <td th:text = "${passenger.flight.toAirport.name}"></td>
+                <td th:text = "${passenger.flight.plane}"></td>
+                <td th:text = "${passenger.flight.depTime}"></td>
                 <td>
                     <a th:href="@{/passengers/edit/{id}(id=${passenger.id})}" class="btn btn-primary">Update</a>
                     <a th:href="@{/passengers/{id}(id=${passenger.id})}" class="btn btn-danger">Delete</a>

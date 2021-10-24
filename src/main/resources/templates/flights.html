@@ -14,12 +14,12 @@
 <div class="container" align="center">
 
     <div class="row">
-        <h1>Airports</h1>
+        <h1>Flights</h1>
     </div>
 
     <div class="row">
         <div class="col-lg-3">
-            <a th:href = "@{/airports/new}" class = "btn btn-primary btn-sm mb-3">Add Airport</a>
+            <a th:href = "@{/flights/new}" class = "btn btn-primary btn-sm mb-3">Add Flight</a>
         </div>
     </div>
     <br>
@@ -27,19 +27,24 @@
     <table class="table table-stripped table-bordered">
         <thead class="table-dark">
         <tr>
-            <th>Airport ID</th>
-            <th>Name</th>
-            <th>country</th>
+            <th>Flight ID</th>
+            <th>Plane</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure Time</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each = "airport: ${airports}">
-            <td th:text = "${airport.id}"></td>
-            <td th:text = "${airport.name}"></td>
-            <td th:text = "${airport.country}"></td>
+        <tr th:each = "flight: ${flights}">
+            <td th:text = "${flight.id}"></td>
+            <td th:text = "${flight.plane}"></td>
+            <td th:text = "${flight.fromAirport.name}"></td>
+            <td th:text = "${flight.toAirport.name}"></td>
+            <td th:text = "${flight.depTime}"></td>
             <td>
-                <a th:href="@{/airports/edit/{id}(id=${airport.id})}" class="btn btn-primary">Update</a>
-                <a th:href="@{/airports/{id}(id=${airport.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/flights/edit/{id}(id=${flight.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/flights/{id}(id=${flight.id})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>
